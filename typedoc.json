@@ -3,6 +3,9 @@
   "sidebarLinks": {
     "Github": "https://github.com/HeeOne/eutils"
   },
+  "navigationLinks": {
+    "Github": "https://github.com/HeeOne/eutils"
+  },
   "entryPoints": ["src/index.ts", "src/type.ts"],
   "entryPointStrategy": "resolve",
   "out": "docs",
@@ -27,7 +30,7 @@
     "includeGroups": false, //导航栏是否展示 `@group` 作为目录层级
     "includeCategories": true, //导航栏是否展示 `@category` 作为目录层级
     "includeFolders": false, //？？
-    "compactFolders": false, //控制是否展开目录
+    "compactFolders": true, //控制是否展开目录
     "excludeReferences": true
   },
   "groupOrder": ["Get Started", "Interface", "Type Aliase", "Date", "Math"]
