@@ -1,0 +1,34 @@
+{
+  "$schema": "https://typedoc.org/schema.json",
+  "sidebarLinks": {
+    "Github": "https://github.com/HeeOne/eutils"
+  },
+  "entryPoints": ["src/index.ts", "src/type.ts"],
+  "entryPointStrategy": "resolve",
+  "out": "docs",
+  "name": "eUtils 工具库文档",
+  "readme": "README.md",
+  "projectDocuments": ["documents/*.md"],
+  "exclude": ["node_modules", "src/**/*.test.ts"],
+  "excludeExternals": true,
+  "excludePrivate": true,
+  "hideGenerator": true,
+  "includeVersion": true,
+  // Specify the Varvara theme plugin
+  // @/ 代替src所需插件
+  // "typedoc-plugin-missing-exports"
+  "plugin": ["varvara-typedoc-theme"],
+  // Set the theme to Varvara
+  "theme": "varvara",
+  "customCss": "./theme/varvara.css",
+  "categoryOrder": ["Format", "Type Aliase", "Interface", "*"],
+  "categorizeByGroup": true, // 点击 `modelues`时, 是否会根据 `@group - @category` 分组展示内容
+  "navigation": {
+    "includeGroups": false, //导航栏是否展示 `@group` 作为目录层级
+    "includeCategories": true, //导航栏是否展示 `@category` 作为目录层级
+    "includeFolders": false, //？？
+    "compactFolders": false, //控制是否展开目录
+    "excludeReferences": true
+  },
+  "groupOrder": ["Get Started", "Interface", "Type Aliase", "Date", "Math"]
+}

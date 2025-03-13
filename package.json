@@ -1,0 +1,67 @@
+{
+  "name": "@heyee/eutils",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "A useful utility package",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "browser": "dist/umd/@heyee/eutils.min.js",
+  "exports": {
+    ".": {
+      "import": "./dist/esm/index.js",
+      "require": "./dist/cjs/index.js",
+      "browser": "./dist/umd/@heyee/eutils.min.js"
+    }
+  },
+  "scripts": {
+    "build": "rollup -c",
+    "test": "jest",
+    "prepare": "husky",
+    "docs": "typedoc"
+  },
+  "keywords": [
+    "dashboard",
+    "utils",
+    "common utils"
+  ],
+  "author": "Hejingyi",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/HeeOne/eutils"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.26.10",
+    "@babel/preset-env": "^7.26.9",
+    "@commitlint/cli": "^19.8.0",
+    "@commitlint/config-conventional": "^19.8.0",
+    "@rollup/plugin-alias": "^5.1.1",
+    "@rollup/plugin-commonjs": "^28.0.3",
+    "@rollup/plugin-node-resolve": "^16.0.1",
+    "@rollup/plugin-terser": "^0.4.4",
+    "@rollup/plugin-typescript": "^12.1.2",
+    "@types/jest": "^29.5.14",
+    "@types/node": "^22.13.10",
+    "babel-jest": "^29.7.0",
+    "conventional-changelog-atom": "^5.0.0",
+    "eslint": "^8.57.1",
+    "eslint-config-standard": "^17.1.0",
+    "eslint-plugin-import": "^2.31.0",
+    "eslint-plugin-n": "^16.6.2",
+    "eslint-plugin-promise": "^6.6.0",
+    "husky": "^9.1.7",
+    "jest": "^29.7.0",
+    "lint-staged": "^15.4.3",
+    "prettier": "3.5.3",
+    "rollup": "^4.35.0",
+    "ts-jest": "^29.2.6",
+    "ts-node": "^10.9.2",
+    "typedoc": "^0.27.9",
+    "typedoc-plugin-missing-exports": "^3.1.0",
+    "typescript": "^5.8.2",
+    "varvara-typedoc-theme": "^0.2.0"
+  },
+  "dependencies": {
+    "tslib": "^2.8.1"
+  }
+}
