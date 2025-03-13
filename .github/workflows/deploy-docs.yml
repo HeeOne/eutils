@@ -1,0 +1,44 @@
+name: Deploy JSDoc to GitHub Pages
+
+on:
+  # 手动触发
+  workflow_dispatch:
+    # 可选：定义输入参数（见下一步）
+    inputs:
+      version:
+        description: '文档版本号'
+        required: false
+        type: string
+  # 打标签触发
+  push:
+    tags:
+      - 'doc*' # 当推送以 "doc" 开头的标签时触发（例如 doc1.0.0）
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. 检出代码
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      # 2. 设置 Node.js 环境
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20' # 根据项目需要调整版本
+
+      # 3. 安装依赖并生成文档
+      - name: Install Dependencies & Build Docs
+        run: |
+          npm install
+          npm run docs  # 假设你的 package.json 中有 "docs": "jsdoc -c jsdoc.conf.json"
+
+      # 4. 部署到 GitHub Pages
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }} # 自动注入的 Token
+          publish_dir: ./docs # JSDoc 输出目录（根据实际路径调整）
+          keep_files: false # 是否保留旧文件（推荐 false）
