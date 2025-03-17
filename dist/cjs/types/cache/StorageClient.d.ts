@@ -77,4 +77,4 @@ declare class StorageClient {
      */
     clear(): void;
 }
-export default StorageClient;
+export { StorageClient };

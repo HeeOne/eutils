@@ -126,4 +126,4 @@ class StorageClient {
   }
 }
 
-export default StorageClient
+export { StorageClient }
