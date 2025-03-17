@@ -21,6 +21,7 @@
   // @/ 代替src所需插件
   // "typedoc-plugin-missing-exports", "varvara-typedoc-theme",
   "plugin": ["typedoc-material-theme"],
+  "themeColor": "#cb9820",
   // Set the theme to varvara
   // "theme": "varvara",
   // "customCss": "./theme/varvara.css",
