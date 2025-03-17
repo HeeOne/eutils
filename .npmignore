@@ -1,3 +1,11 @@
+
+.vscode/
+.github/
+.husky/
+docs/
+documents/
+src/
+theme/
 node_modules/
 test/
 .gitignore

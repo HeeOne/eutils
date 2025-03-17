@@ -52,9 +52,10 @@ export default [
   {
     input: 'src/index.ts',
     output: {
-      file: 'dist/umd/@heyee/eutils.min.js',
+      dir: 'dist/umd', // 修改输出目录为 dist/umd
       format: 'umd',
       name: '$eutils',
+      entryFileNames: 'eutils.min.js', // 直接生成在 umd 目录下
     },
     plugins: [
       ...commonPlugins,
