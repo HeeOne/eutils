@@ -1,7 +1,7 @@
 {
   "$schema": "https://typedoc.org/schema.json",
   "sidebarLinks": {
-    "Github": "https://github.com/HeeOne/eutils"
+    // "Github": "https://github.com/HeeOne/eutils"
   },
   "navigationLinks": {
     "Github": "https://github.com/HeeOne/eutils"
@@ -9,7 +9,7 @@
   "entryPoints": ["src/index.ts", "src/type.ts"],
   "entryPointStrategy": "resolve",
   "out": "docs",
-  "name": "eUtils 工具库文档",
+  "name": "eUtils",
   "readme": "README.md",
   "projectDocuments": ["documents/*.md"],
   "exclude": ["node_modules", "src/**/*.test.ts"],
@@ -19,11 +19,11 @@
   "includeVersion": true,
   // Specify the Varvara theme plugin
   // @/ 代替src所需插件
-  // "typedoc-plugin-missing-exports"
-  "plugin": ["varvara-typedoc-theme"],
-  // Set the theme to Varvara
-  "theme": "varvara",
-  "customCss": "./theme/varvara.css",
+  // "typedoc-plugin-missing-exports", "varvara-typedoc-theme",
+  "plugin": ["typedoc-material-theme"],
+  // Set the theme to varvara
+  // "theme": "varvara",
+  // "customCss": "./theme/varvara.css",
   "categoryOrder": ["Format", "Type Aliase", "Interface", "*"],
   "categorizeByGroup": true, // 点击 `modelues`时, 是否会根据 `@group - @category` 分组展示内容
   "navigation": {

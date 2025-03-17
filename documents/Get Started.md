@@ -18,11 +18,19 @@ $eutils.formatNumberThousands(34566)
 npm install @heyee/eutils
 ```
 
-代码引入
+#### ESM
 
 ```js
 import { formatNumberThousands } from '@heyee/eutils'
 
+formatNumberThousands(34566)
+// console: 34,566
+```
+
+#### CJS
+
+```js
+const { formatNumberThousands } = require('@heyee/eutils')
 formatNumberThousands(34566)
 // console: 34,566
 ```

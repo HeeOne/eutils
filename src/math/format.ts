@@ -12,7 +12,7 @@ import { isDef, type NumberLike } from '../_validate/is'
  * formatNumberThousands(12345678.9); // 输出: 12,345,678.9
  *
  * @example
- * // 示例 1: 指定小数位数
+ * // 示例 2: 指定小数位数
  * formatNumberThousands(12345678.35, 0); // 输出: 12,345,678
  *
  */
@@ -44,7 +44,7 @@ export function formatNumberThousands(
  * formatNumberToPrecise(123.874); // 输出: 123.87
  *
  * @example
- * // 示例 1: 指定小数位数
+ * // 示例 2: 指定小数位数
  * formatNumberToPrecise(123.876, 0); // 输出: 124
  */
 export function formatNumberToPrecise(value: NumberLike, toPrecise: NumberLike = 2): number {

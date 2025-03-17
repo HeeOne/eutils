@@ -1,6 +1,8 @@
 import { isDef } from '../_validate/is.mjs';
 
 /** 数值转换成千分位
+ * @group Math
+ * @category Format
  * @param {NumberLike} value
  * @param {NumberLike | undefined} [toPrecise = undefined]
  * @return {NumberLike}
@@ -10,7 +12,7 @@ import { isDef } from '../_validate/is.mjs';
  * formatNumberThousands(12345678.9); // 输出: 12,345,678.9
  *
  * @example
- * // 示例 1: 指定小数位数
+ * // 示例 2: 指定小数位数
  * formatNumberThousands(12345678.35, 0); // 输出: 12,345,678
  *
  */
@@ -27,6 +29,8 @@ function formatNumberThousands(value, toPrecise = undefined) {
     return temp.join('.');
 }
 /** 数值精确小数后toPrecise位
+ * @group Math
+ * @category Format
  * @param {NumberLike} value
  * @param {NumberLike} [toPrecise = 2]
  * @returns {number} 包含NaN
@@ -36,7 +40,7 @@ function formatNumberThousands(value, toPrecise = undefined) {
  * formatNumberToPrecise(123.874); // 输出: 123.87
  *
  * @example
- * // 示例 1: 指定小数位数
+ * // 示例 2: 指定小数位数
  * formatNumberToPrecise(123.876, 0); // 输出: 124
  */
 function formatNumberToPrecise(value, toPrecise = 2) {

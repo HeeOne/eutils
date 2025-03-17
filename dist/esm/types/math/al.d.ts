@@ -1,4 +1,6 @@
 /** Largest Reminder Method 计算百分数
+ * @group Math
+ * @category Algorithm
  * @param {number[]} arr - 原始数据
  * @param {number} [precision = 2] - 精确度
  * @return {number[]} arr - 对应百分比

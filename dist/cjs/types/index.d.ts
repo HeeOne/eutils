@@ -1,3 +1,6 @@
-export * from './math/al';
-export * from './math/format';
+/**
+ * API References
+ * @module API
+ */
+export * from './math/index';
 export * from './date/index';

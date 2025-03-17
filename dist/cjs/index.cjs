@@ -1,6 +1,8 @@
 'use strict';
 
 /** Largest Reminder Method 计算百分数
+ * @group Math
+ * @category Algorithm
  * @param {number[]} arr - 原始数据
  * @param {number} [precision = 2] - 精确度
  * @return {number[]} arr - 对应百分比
@@ -65,6 +67,8 @@ function isDef(value) {
 }
 
 /** 数值转换成千分位
+ * @group Math
+ * @category Format
  * @param {NumberLike} value
  * @param {NumberLike | undefined} [toPrecise = undefined]
  * @return {NumberLike}
@@ -74,7 +78,7 @@ function isDef(value) {
  * formatNumberThousands(12345678.9); // 输出: 12,345,678.9
  *
  * @example
- * // 示例 1: 指定小数位数
+ * // 示例 2: 指定小数位数
  * formatNumberThousands(12345678.35, 0); // 输出: 12,345,678
  *
  */
@@ -91,6 +95,8 @@ function formatNumberThousands(value, toPrecise = undefined) {
     return temp.join('.');
 }
 /** 数值精确小数后toPrecise位
+ * @group Math
+ * @category Format
  * @param {NumberLike} value
  * @param {NumberLike} [toPrecise = 2]
  * @returns {number} 包含NaN
@@ -100,7 +106,7 @@ function formatNumberThousands(value, toPrecise = undefined) {
  * formatNumberToPrecise(123.874); // 输出: 123.87
  *
  * @example
- * // 示例 1: 指定小数位数
+ * // 示例 2: 指定小数位数
  * formatNumberToPrecise(123.876, 0); // 输出: 124
  */
 function formatNumberToPrecise(value, toPrecise = 2) {
@@ -116,7 +122,12 @@ function formatNumberToPrecise(value, toPrecise = 2) {
 }
 
 /**
+ * @module Date
+ */
+/**
  * Parse the time to string
+ * @group Date
+ * @category Format
  * @param {TimeLike} time - 时间
  * @param {string} [format='{y}-{m}-{d} {h}:{i}:{s}']
  * @returns {string | null}
@@ -126,7 +137,7 @@ function formatNumberToPrecise(value, toPrecise = 2) {
  * parseTime(1741785818632); // 输出: 2025-03-12 21:23:38
  *
  * @example
- * // 示例 1: 指定格式
+ * // 示例 2: 指定格式
  * parseTime('1741785818632', '{y}-{m}-{d}') // 输出: 2025-03-12
  */
 function parseTime(time, format = '{y}-{m}-{d} {h}:{i}:{s}') {
@@ -173,8 +184,78 @@ function parseTime(time, format = '{y}-{m}-{d} {h}:{i}:{s}') {
     });
     return time_str;
 }
+/**
+ * 列出范围之间月份, 返回YYYY-MM格式
+ * @group Date
+ * @param {TimeLike} from
+ * @param {TimeLike} to
+ * @returns {string[]}
+ *
+ * @example
+ * // 示例 1
+ * listMonths(new Date('2025-01'), new Date('2025-03'));
+ * // 输出: ['2025-01', '2025-02','2025-03']
+ *
+ * @example
+ * // 示例 2: 跨年
+ * listMonths(new Date('2024-12'), new Date('2025-03'));
+ * // 输出: ['2024-12','2025-01', '2025-02','2025-03']
+ */
+function listMonths(from, to) {
+    const dateFrom = parseTime(from, '{y}-{m}');
+    const dateTo = parseTime(to, '{y}-{m}');
+    if (!dateFrom || !dateTo) {
+        return [];
+    }
+    // 解析字符串为日期对象（月份的第一天）
+    const parseDate = (str) => {
+        const [year, month] = str.split('-').map(Number);
+        return new Date(year, month - 1, 1); // 月份从0开始
+    };
+    let startDate = parseDate(dateFrom);
+    let endDate = parseDate(dateTo);
+    // 确保起始日期不晚于结束日期
+    if (startDate > endDate) {
+        [startDate, endDate] = [endDate, startDate];
+    }
+    const months = [];
+    const currentDate = new Date(startDate);
+    while (currentDate <= endDate) {
+        // 格式化为YYYY-MM
+        const year = currentDate.getFullYear();
+        const month = (currentDate.getMonth() + 1).toString().padStart(2, '0');
+        months.push(`${year}-${month}`);
+        // 增加一个月
+        currentDate.setMonth(currentDate.getMonth() + 1);
+    }
+    return months;
+}
+/**
+ * 获取某天的ndays前的日期的字符串
+ * @group Date
+ * @param {TimeLike} timestring
+ * @param {number} [ndays = 90]
+ * @returns {Date}
+ *
+ * @example
+ * // 示例 1：获取此时间戳前90天时间戳
+ * generateDatefrom(1742194738400, 90).getTime()
+ * // 1744786738400
+ *
+ * @example
+ * // 示例 2: 获取此时间戳30天后时间戳
+ * generateDatefrom(1742194738400, -30).getTime()
+ * // 输出: 1734418738400
+ */
+function generateDatefrom(timestring, ndays = 90) {
+    const temp = timestring ? new Date(timestring).getTime() : new Date().getTime();
+    //  1000 * 60 * 60 * 24 = 86400000
+    return new Date(temp - 86400000 * ndays);
+}
 
 exports.formatNumberThousands = formatNumberThousands;
 exports.formatNumberToPrecise = formatNumberToPrecise;
+exports.generateDatefrom = generateDatefrom;
 exports.getPercentWithPrecision = getPercentWithPrecision;
+exports.listMonths = listMonths;
 exports.parseTime = parseTime;
