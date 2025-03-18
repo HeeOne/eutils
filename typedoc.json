@@ -6,7 +6,7 @@
   "navigationLinks": {
     "Github": "https://github.com/HeeOne/eutils"
   },
-  "entryPoints": ["src/index.ts", "src/type.ts"],
+  "entryPoints": ["src/index.ts"],
   "entryPointStrategy": "resolve",
   "out": "docs",
   "name": "eUtils",

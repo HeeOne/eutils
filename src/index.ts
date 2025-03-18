@@ -4,4 +4,4 @@
  */
 export * from './math/index'
 export * from './date/index'
-export * from './cache/StorageClient'
+export * from './cache/index'

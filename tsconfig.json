@@ -4,16 +4,21 @@
     "paths": {
       "@/*": ["src/*"]
     },
+    "rootDir": "src",
+    "outDir": "dist",
+    "declaration": true,
+    "declarationDir": "dist/types", // 保持声明目录配置
     "target": "ES2020",
     "module": "ESNext",
     "lib": ["ES2020"],
-    "declaration": true,
-    "rootDir": "src",
     "strict": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
-    "moduleResolution": "node"
+    "moduleResolution": "node",
+    // 新增配置
+    "emitDeclarationOnly": true,
+    "noEmit": false
   },
   "include": ["src/**/*.ts"],
-  "exclude": ["node_modules", "dist", "test"]
+  "exclude": ["node_modules", "dist", "__tests__"]
 }

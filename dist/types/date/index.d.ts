@@ -6,7 +6,6 @@
  * Date are for proceing Date
  * @showGroups
  */
-
 /**
  * 表示可以代表时间的类型。
  *
@@ -19,8 +18,7 @@
  * @property {string} - Unix 时间戳。
  * @property {number} - Unix 时间戳，代表从 1970 年 1 月 1 日 00:00:00 UTC 开始经过的毫秒数。
  */
-export type TimeLike = Date | string | number
-
+export type TimeLike = Date | string | number;
 /**
  * 定义一个用于格式化时间或日期相关信息的对象结构接口。
  * 该接口描述了一个包含多个时间单位属性的对象，可用于传递和处理时间相关的格式化信息。
@@ -35,16 +33,15 @@ export type TimeLike = Date | string | number
  * @property {any} [key: string] - 允许接口包含其他任意属性，键为字符串类型，值为任意类型。
  */
 export interface FormatAccept {
-  y: number //年
-  m: number //月
-  d: number //日
-  h: number //时
-  i: number //分
-  s: number //秒
-  a: number //天
-  [key: string]: any
+    y: number;
+    m: number;
+    d: number;
+    h: number;
+    i: number;
+    s: number;
+    a: number;
+    [key: string]: any;
 }
-
 /**
  * Parse the time to string
  * @group Date
@@ -61,53 +58,7 @@ export interface FormatAccept {
  * // 示例 2: 指定格式
  * parseTime('1741785818632', '{y}-{m}-{d}') // 输出: 2025-03-12
  */
-export function parseTime(
-  time: TimeLike,
-  format: string = '{y}-{m}-{d} {h}:{i}:{s}',
-): string | null {
-  if (arguments.length === 0 || !time) {
-    return null
-  }
-  let date
-  if (typeof time === 'object') {
-    date = time
-  } else {
-    if (typeof time === 'string') {
-      if (/^[0-9]+$/.test(time)) {
-        // support "1548221490638"
-        time = parseInt(time)
-      } else {
-        // support safari
-        // https://stackoverflow.com/questions/4310953/invalid-date-in-safari
-        time = time.replace(new RegExp(/-/gm), '/')
-      }
-    }
-
-    if (typeof time === 'number' && time.toString().length === 10) {
-      time = time * 1000
-    }
-    date = new Date(time)
-  }
-  const formatObj: FormatAccept = {
-    y: date.getFullYear(),
-    m: date.getMonth() + 1,
-    d: date.getDate(),
-    h: date.getHours(),
-    i: date.getMinutes(),
-    s: date.getSeconds(),
-    a: date.getDay(),
-  }
-  const time_str = format.replace(/{([ymdhisa])+}/g, (result, key) => {
-    const value = formatObj[key]
-    // Note: getDay() returns 0 on Sunday
-    if (key === 'a') {
-      return ['日', '一', '二', '三', '四', '五', '六'][value]
-    }
-    return value.toString().padStart(2, '0')
-  })
-  return time_str
-}
-
+export declare function parseTime(time: TimeLike, format?: string): string | null;
 /**
  * 列出范围之间月份, 返回YYYY-MM格式
  * @group Date
@@ -125,42 +76,7 @@ export function parseTime(
  * listMonths(new Date('2024-12'), new Date('2025-03'));
  * // 输出: ['2024-12','2025-01', '2025-02','2025-03']
  */
-export function listMonths(from: TimeLike, to: TimeLike): string[] {
-  const dateFrom = parseTime(from, '{y}-{m}')
-  const dateTo = parseTime(to, '{y}-{m}')
-  if (!dateFrom || !dateTo) {
-    return []
-  }
-  // 解析字符串为日期对象（月份的第一天）
-  const parseDate = (str: string) => {
-    const [year, month] = str.split('-').map(Number)
-    return new Date(year, month - 1, 1) // 月份从0开始
-  }
-
-  let startDate = parseDate(dateFrom)
-  let endDate = parseDate(dateTo)
-
-  // 确保起始日期不晚于结束日期
-  if (startDate > endDate) {
-    ;[startDate, endDate] = [endDate, startDate]
-  }
-
-  const months = []
-  const currentDate = new Date(startDate)
-
-  while (currentDate <= endDate) {
-    // 格式化为YYYY-MM
-    const year = currentDate.getFullYear()
-    const month = (currentDate.getMonth() + 1).toString().padStart(2, '0')
-    months.push(`${year}-${month}`)
-
-    // 增加一个月
-    currentDate.setMonth(currentDate.getMonth() + 1)
-  }
-
-  return months
-}
-
+export declare function listMonths(from: TimeLike, to: TimeLike): string[];
 /**
  * 获取某天的ndays前的日期的字符串
  * @group Date
@@ -178,8 +94,4 @@ export function listMonths(from: TimeLike, to: TimeLike): string[] {
  * generateDatefrom(1742194738400, -30).getTime()
  * // 输出: 1734418738400
  */
-export function generateDatefrom(timestring: TimeLike, ndays: number = 90): Date {
-  const temp = timestring ? new Date(timestring).getTime() : new Date().getTime()
-  //  1000 * 60 * 60 * 24 = 86400000
-  return new Date(temp - 86400000 * ndays)
-}
+export declare function generateDatefrom(timestring: TimeLike, ndays?: number): Date;

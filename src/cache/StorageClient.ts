@@ -1,69 +1,60 @@
 /**
- * 存储客户端配置选项
- * @inteface {Object} StorageClientOptions
- * @property {string} [prefix=""] - 缓存键名前缀（用于命名空间隔离）
- * @property {"local"|"session"} [storageType="local"] - 存储类型选择
+ * 一个封装了本地存储（localStorage 和 sessionStorage）的客户端类，支持键名前缀、数据过期时间和序列化/反序列化功能。
+ * @example
+ * const client = new StorageClient({ prefix: 'app', storageType: 'local' });
+ * client.setItem('token', 'abc123', 3600 * 1000); // 1小时后过期
  */
 interface StorageClientOptions {
+  /**
+   * 存储键名的统一前缀，用于区分不同模块或应用的数据
+   * @default ''
+   */
   prefix?: string
+  /**
+   * 选择使用的存储类型，可选本地存储（local）或会话存储（session）
+   * @default 'local'
+   */
   storageType?: 'local' | 'session'
 }
 
-/**
- * 缓存管理客户端
- * @class
- * @description 提供基于 localStorage 和 sessionStorage 的增强型缓存管理功能，支持：
- * - 自动键名前缀隔离
- * - TTL 过期时间控制
- * - 安全数据序列化/反序列化
- */
 class StorageClient {
   /**
-   * 缓存键名前缀（自动附加到所有键名前）
-   * @private
-   * @type {string}
+   * 存储键名前缀，自动添加到所有键名前
    */
   private prefix: string
-
   /**
-   * 底层存储对象 (localStorage 或 sessionStorage)
-   * @private
-   * @type {Storage}
+   * 实际使用的存储对象（localStorage 或 sessionStorage）
    */
   private storage: Storage
 
   /**
-   * 创建存储客户端实例
-   * @constructor
-   * @param {StorageClientOptions} [options={}] - 客户端配置选项
-   * @example
-   * new StorageClient({ prefix: 'app', storageType: 'session' })
+   * 创建一个存储客户端实例
+   * @param options 配置选项
    */
-  constructor({ prefix = '', storageType = 'local' }: StorageClientOptions = {}) {
+  constructor({ prefix = '', storageType = 'local' }: StorageClientOptions) {
     this.prefix = prefix
-    this.storage = storageType === 'local' ? localStorage : sessionStorage
+    this.storage = storageType == 'local' ? localStorage : sessionStorage
   }
 
   /**
-   * 生成带前缀的真实存储键名
-   * @private
-   * @method
-   * @param {string} key - 原始键名
-   * @returns {string} 组合后的完整键名
+   * 生成带前缀的实际存储键名
+   * @param key 原始键名
+   * @returns 组合前缀后的完整键名
+   * @example
+   * getKey('token') // returns 'app-token' (当prefix为'app'时)
    */
   private getKey(key: string): string {
     return `${this.prefix}-${key}`
   }
 
   /**
-   * 存储数据项
-   * @template T
-   * @method
-   * @param {string} key - 存储键名
-   * @param {T} value - 需要存储的值（自动 JSON 序列化）
-   * @param {number} [ttl] - 过期时间（单位：毫秒）
+   * 存储数据到指定键名
+   * @template T 存储值的类型
+   * @param key 存储键名（不需要包含前缀）
+   * @param value 要存储的值（自动序列化）
+   * @param ttl 数据的存活时间（单位：毫秒），可选
    * @example
-   * setItem('token', 'abc123', 3600_000) // 1小时后过期
+   * client.setItem('user', { name: 'John' }, 60000) // 数据1分钟后过期
    */
   setItem<T>(key: string, value: T, ttl?: number): void {
     const fullKey = this.getKey(key)
@@ -73,17 +64,19 @@ class StorageClient {
   }
 
   /**
-   * 获取数据项
-   * @method
-   * @param {string} key - 要获取的键名
-   * @param {*} [defaultVal] - 当键不存在或过期时的默认值
-   * @returns {*} 存储的值或默认值（自动 JSON 反序列化）
+   * 从指定键名获取存储的数据
+   * @param key 存储键名（不需要包含前缀）
+   * @param defaultVal 当数据不存在/过期/解析失败时返回的默认值
+   * @returns 存储的值或默认值
+   * @example
+   * const user = client.getItem('user', { name: 'guest' })
    */
-  getItem<T = any>(key: string, defaultVal?: T): T | undefined {
+  getItem(key: string, defaultVal?: any): any {
     const fullKey = this.getKey(key)
     const valStr = this.storage.getItem(fullKey)
-
-    if (!valStr) return defaultVal
+    if (!valStr) {
+      return defaultVal
+    }
 
     try {
       const item = JSON.parse(valStr)
@@ -93,16 +86,15 @@ class StorageClient {
       }
       return item.value
     } catch (e) {
-      console.error(`Storage parse error [${fullKey}]:`, e)
+      console.error(e)
       this.storage.removeItem(fullKey)
       return defaultVal
     }
   }
 
   /**
-   * 删除指定键值对
-   * @method
-   * @param {string} key - 要删除的键名
+   * 移除指定键名的存储数据
+   * @param key 要移除的存储键名（不需要包含前缀）
    */
   removeItem(key: string): void {
     const fullKey = this.getKey(key)
@@ -110,12 +102,12 @@ class StorageClient {
   }
 
   /**
-   * 清除所有带前缀的存储项
-   * @method
-   * @description 安全删除所有以当前 prefix 开头的存储项
+   * 清除所有带有当前前缀的存储数据
+   * @example
+   * client.clear() // 删除所有以'prefix-'开头的存储项
    */
-  clear(): void {
-    const keysToRemove: string[] = []
+  clear() {
+    const keysToRemove = []
     for (let i = 0; i < this.storage.length; i++) {
       const key = this.storage.key(i)
       if (key && key.startsWith(this.prefix)) {
@@ -126,4 +118,4 @@ class StorageClient {
   }
 }
 
-export { StorageClient }
+export default StorageClient

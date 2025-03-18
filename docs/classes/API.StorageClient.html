@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="x-ua-compatible" content="IE=edge" />
-    <title>StorageClient | eUtils - v1.0.7</title>
+    <title>StorageClient | eUtils - v1.0.9</title>
     <meta name="description" content="Documentation for eUtils" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="../assets/style.css" />
@@ -195,7 +195,7 @@
             <li class="state loading">Preparing search index...</li>
             <li class="state failure">The search index is not available</li>
           </ul>
-          <a href="../index.html" class="title">eUtils - v1.0.7</a>
+          <a href="../index.html" class="title">eUtils - v1.0.9</a>
         </div>
         <div class="table-cell" id="tsd-widgets">
           <a
@@ -219,34 +219,12 @@
           </ul>
           <h1>Class StorageClient</h1>
         </div>
-        <section class="tsd-panel tsd-comment">
-          <div class="tsd-comment tsd-typography"><p>缓存管理客户端</p></div>
-          <div class="tsd-comment tsd-typography">
-            <div class="tsd-tag-description">
-              <h4 class="tsd-anchor-link">
-                <a id="description" class="tsd-anchor"></a>Description<a
-                  href="#description"
-                  aria-label="Permalink"
-                  class="tsd-anchor-icon"
-                  ><svg viewBox="0 0 24 24" aria-hidden="true">
-                    <use href="../assets/icons.svg#icon-anchor"></use></svg
-                ></a>
-              </h4>
-              <p>提供基于 localStorage 和 sessionStorage 的增强型缓存管理功能，支持：</p>
-              <ul>
-                <li>自动键名前缀隔离</li>
-                <li>TTL 过期时间控制</li>
-                <li>安全数据序列化/反序列化</li>
-              </ul>
-            </div>
-          </div>
-        </section>
         <aside class="tsd-sources">
           <ul>
             <li>
               Defined in
               <a
-                href="https://github.com/HeeOne/eutils/blob/8d89b8890f9f2440443f6db5bffc54265dbc53ad/src/cache/StorageClient.ts#L20"
+                href="https://github.com/HeeOne/eutils/blob/0cffd4d87004c81636a3454c266919310a2a256b/src/cache/StorageClient.ts#L20"
                 >cache/StorageClient.ts:20</a
               >
             </li>
@@ -335,7 +313,7 @@
                     <span class="tsd-kind-constructor-signature">StorageClient</span
                     ><span class="tsd-signature-symbol">(</span
                     ><span class="tsd-kind-parameter">options</span
-                    ><span class="tsd-signature-symbol">?:</span>
+                    ><span class="tsd-signature-symbol">:</span>
                     <span class="tsd-signature-type">StorageClientOptions</span
                     ><span class="tsd-signature-symbol">)</span
                     ><span class="tsd-signature-symbol">:</span>
@@ -350,18 +328,16 @@
                     ></a>
                   </div>
                   <div class="tsd-description">
-                    <div class="tsd-comment tsd-typography"><p>创建存储客户端实例</p></div>
+                    <div class="tsd-comment tsd-typography"><p>创建一个存储客户端实例</p></div>
                     <div class="tsd-parameters">
                       <h4 class="tsd-parameters-title">Parameters</h4>
                       <ul class="tsd-parameter-list">
                         <li>
                           <span
-                            ><code class="tsd-tag">Optional</code
                             ><span class="tsd-kind-parameter">options</span>:
-                            <span class="tsd-signature-type">StorageClientOptions</span
-                            ><span class="tsd-signature-symbol"> = {}</span></span
+                            <span class="tsd-signature-type">StorageClientOptions</span></span
                           >
-                          <div class="tsd-comment tsd-typography"><p>客户端配置选项</p></div>
+                          <div class="tsd-comment tsd-typography"><p>配置选项</p></div>
                           <div class="tsd-comment tsd-typography"></div>
                         </li>
                       </ul>
@@ -372,28 +348,14 @@
                         >StorageClient</a
                       >
                     </h4>
-                    <div class="tsd-comment tsd-typography">
-                      <div class="tsd-tag-example">
-                        <h4 class="tsd-anchor-link">
-                          <a id="example" class="tsd-anchor"></a>Example<a
-                            href="#example"
-                            aria-label="Permalink"
-                            class="tsd-anchor-icon"
-                            ><svg viewBox="0 0 24 24" aria-hidden="true">
-                              <use href="../assets/icons.svg#icon-anchor"></use></svg
-                          ></a>
-                        </h4>
-                        <pre><code class="ts"><span class="hl-10">new</span><span class="hl-2"> </span><span class="hl-5">StorageClient</span><span class="hl-2">({ </span><span class="hl-7">prefix:</span><span class="hl-2"> </span><span class="hl-4">&#39;app&#39;</span><span class="hl-2">, </span><span class="hl-7">storageType:</span><span class="hl-2"> </span><span class="hl-4">&#39;session&#39;</span><span class="hl-2"> })</span>
-</code><button type="button">Copy</button></pre>
-                      </div>
-                    </div>
+                    <div class="tsd-comment tsd-typography"></div>
                     <aside class="tsd-sources">
                       <ul>
                         <li>
                           Defined in
                           <a
-                            href="https://github.com/HeeOne/eutils/blob/8d89b8890f9f2440443f6db5bffc54265dbc53ad/src/cache/StorageClient.ts#L42"
-                            >cache/StorageClient.ts:42</a
+                            href="https://github.com/HeeOne/eutils/blob/0cffd4d87004c81636a3454c266919310a2a256b/src/cache/StorageClient.ts#L34"
+                            >cache/StorageClient.ts:34</a
                           >
                         </li>
                       </ul>
@@ -437,33 +399,25 @@
                     ></a>
                   </div>
                   <div class="tsd-description">
-                    <div class="tsd-comment tsd-typography"><p>清除所有带前缀的存储项</p></div>
+                    <div class="tsd-comment tsd-typography">
+                      <p>清除所有带有当前前缀的存储数据</p>
+                    </div>
                     <h4 class="tsd-returns-title">
                       Returns <span class="tsd-signature-type">void</span>
                     </h4>
                     <div class="tsd-comment tsd-typography">
-                      <div class="tsd-tag-method">
+                      <div class="tsd-tag-example">
                         <h4 class="tsd-anchor-link">
-                          <a id="method" class="tsd-anchor"></a>Method<a
-                            href="#method"
+                          <a id="example" class="tsd-anchor"></a>Example<a
+                            href="#example"
                             aria-label="Permalink"
                             class="tsd-anchor-icon"
                             ><svg viewBox="0 0 24 24" aria-hidden="true">
                               <use href="../assets/icons.svg#icon-anchor"></use></svg
                           ></a>
                         </h4>
-                      </div>
-                      <div class="tsd-tag-description">
-                        <h4 class="tsd-anchor-link">
-                          <a id="description-1" class="tsd-anchor"></a>Description<a
-                            href="#description-1"
-                            aria-label="Permalink"
-                            class="tsd-anchor-icon"
-                            ><svg viewBox="0 0 24 24" aria-hidden="true">
-                              <use href="../assets/icons.svg#icon-anchor"></use></svg
-                          ></a>
-                        </h4>
-                        <p>安全删除所有以当前 prefix 开头的存储项</p>
+                        <pre><code class="ts"><span class="hl-7">client</span><span class="hl-2">.</span><span class="hl-5">clear</span><span class="hl-2">() </span><span class="hl-9">// 删除所有以&#39;prefix-&#39;开头的存储项</span>
+</code><button type="button">Copy</button></pre>
                       </div>
                     </div>
                     <aside class="tsd-sources">
@@ -471,8 +425,8 @@
                         <li>
                           Defined in
                           <a
-                            href="https://github.com/HeeOne/eutils/blob/8d89b8890f9f2440443f6db5bffc54265dbc53ad/src/cache/StorageClient.ts#L117"
-                            >cache/StorageClient.ts:117</a
+                            href="https://github.com/HeeOne/eutils/blob/0cffd4d87004c81636a3454c266919310a2a256b/src/cache/StorageClient.ts#L109"
+                            >cache/StorageClient.ts:109</a
                           >
                         </li>
                       </ul>
@@ -495,15 +449,6 @@
                   <div class="tsd-signature tsd-anchor-link">
                     <a id="getitem-1" class="tsd-anchor"></a
                     ><span class="tsd-kind-call-signature">getItem</span
-                    ><span class="tsd-signature-symbol">&lt;</span
-                    ><a
-                      class="tsd-signature-type tsd-kind-type-parameter"
-                      href="API.StorageClient.html#getitemt"
-                      >T</a
-                    >
-                    <span class="tsd-signature-symbol">=</span>
-                    <span class="tsd-signature-type">any</span
-                    ><span class="tsd-signature-symbol">&gt;</span
                     ><span class="tsd-signature-symbol">(</span
                     ><span class="tsd-kind-parameter">key</span
                     ><span class="tsd-signature-symbol">:</span>
@@ -511,37 +456,17 @@
                     ><span class="tsd-signature-symbol">,</span>
                     <span class="tsd-kind-parameter">defaultVal</span
                     ><span class="tsd-signature-symbol">?:</span>
-                    <a
-                      class="tsd-signature-type tsd-kind-type-parameter"
-                      href="API.StorageClient.html#getitemt"
-                      >T</a
+                    <span class="tsd-signature-type">any</span
                     ><span class="tsd-signature-symbol">)</span
                     ><span class="tsd-signature-symbol">:</span>
-                    <span class="tsd-signature-type">undefined</span>
-                    <span class="tsd-signature-symbol">|</span>
-                    <a
-                      class="tsd-signature-type tsd-kind-type-parameter"
-                      href="API.StorageClient.html#getitemt"
-                      >T</a
+                    <span class="tsd-signature-type">any</span
                     ><a href="#getitem-1" aria-label="Permalink" class="tsd-anchor-icon"
                       ><svg viewBox="0 0 24 24" aria-hidden="true">
                         <use href="../assets/icons.svg#icon-anchor"></use></svg
                     ></a>
                   </div>
                   <div class="tsd-description">
-                    <div class="tsd-comment tsd-typography"><p>获取数据项</p></div>
-                    <section class="tsd-panel">
-                      <h4>Type Parameters</h4>
-                      <ul class="tsd-type-parameter-list">
-                        <li>
-                          <span
-                            ><a id="getitemt" class="tsd-anchor"></a
-                            ><span class="tsd-kind-type-parameter">T</span> =
-                            <span class="tsd-signature-type">any</span></span
-                          >
-                        </li>
-                      </ul>
-                    </section>
+                    <div class="tsd-comment tsd-typography"><p>从指定键名获取存储的数据</p></div>
                     <div class="tsd-parameters">
                       <h4 class="tsd-parameters-title">Parameters</h4>
                       <ul class="tsd-parameter-list">
@@ -550,47 +475,41 @@
                             ><span class="tsd-kind-parameter">key</span>:
                             <span class="tsd-signature-type">string</span></span
                           >
-                          <div class="tsd-comment tsd-typography"><p>要获取的键名</p></div>
+                          <div class="tsd-comment tsd-typography">
+                            <p>存储键名（不需要包含前缀）</p>
+                          </div>
                           <div class="tsd-comment tsd-typography"></div>
                         </li>
                         <li>
                           <span
                             ><code class="tsd-tag">Optional</code
                             ><span class="tsd-kind-parameter">defaultVal</span>:
-                            <a
-                              class="tsd-signature-type tsd-kind-type-parameter"
-                              href="API.StorageClient.html#getitemt"
-                              >T</a
-                            ></span
+                            <span class="tsd-signature-type">any</span></span
                           >
                           <div class="tsd-comment tsd-typography">
-                            <p>当键不存在或过期时的默认值</p>
+                            <p>当数据不存在/过期/解析失败时返回的默认值</p>
                           </div>
                           <div class="tsd-comment tsd-typography"></div>
                         </li>
                       </ul>
                     </div>
                     <h4 class="tsd-returns-title">
-                      Returns <span class="tsd-signature-type">undefined</span>
-                      <span class="tsd-signature-symbol">|</span>
-                      <a
-                        class="tsd-signature-type tsd-kind-type-parameter"
-                        href="API.StorageClient.html#getitemt"
-                        >T</a
-                      >
+                      Returns <span class="tsd-signature-type">any</span>
                     </h4>
-                    <p>存储的值或默认值（自动 JSON 反序列化）</p>
+                    <p>存储的值或默认值</p>
                     <div class="tsd-comment tsd-typography">
-                      <div class="tsd-tag-method">
+                      <div class="tsd-tag-example">
                         <h4 class="tsd-anchor-link">
-                          <a id="method-1" class="tsd-anchor"></a>Method<a
-                            href="#method-1"
+                          <a id="example-1" class="tsd-anchor"></a>Example<a
+                            href="#example-1"
                             aria-label="Permalink"
                             class="tsd-anchor-icon"
                             ><svg viewBox="0 0 24 24" aria-hidden="true">
                               <use href="../assets/icons.svg#icon-anchor"></use></svg
                           ></a>
                         </h4>
+                        <pre><code class="ts"><span class="hl-10">const</span><span class="hl-2"> </span><span class="hl-11">user</span><span class="hl-2"> = </span><span class="hl-7">client</span><span class="hl-2">.</span><span class="hl-5">getItem</span><span class="hl-2">(</span><span class="hl-4">&#39;user&#39;</span><span class="hl-2">, { </span><span class="hl-7">name:</span><span class="hl-2"> </span><span class="hl-4">&#39;guest&#39;</span><span class="hl-2"> })</span>
+</code><button type="button">Copy</button></pre>
                       </div>
                     </div>
                     <aside class="tsd-sources">
@@ -598,8 +517,8 @@
                         <li>
                           Defined in
                           <a
-                            href="https://github.com/HeeOne/eutils/blob/8d89b8890f9f2440443f6db5bffc54265dbc53ad/src/cache/StorageClient.ts#L82"
-                            >cache/StorageClient.ts:82</a
+                            href="https://github.com/HeeOne/eutils/blob/0cffd4d87004c81636a3454c266919310a2a256b/src/cache/StorageClient.ts#L74"
+                            >cache/StorageClient.ts:74</a
                           >
                         </li>
                       </ul>
@@ -635,7 +554,7 @@
                     ></a>
                   </div>
                   <div class="tsd-description">
-                    <div class="tsd-comment tsd-typography"><p>删除指定键值对</p></div>
+                    <div class="tsd-comment tsd-typography"><p>移除指定键名的存储数据</p></div>
                     <div class="tsd-parameters">
                       <h4 class="tsd-parameters-title">Parameters</h4>
                       <ul class="tsd-parameter-list">
@@ -644,7 +563,9 @@
                             ><span class="tsd-kind-parameter">key</span>:
                             <span class="tsd-signature-type">string</span></span
                           >
-                          <div class="tsd-comment tsd-typography"><p>要删除的键名</p></div>
+                          <div class="tsd-comment tsd-typography">
+                            <p>要移除的存储键名（不需要包含前缀）</p>
+                          </div>
                           <div class="tsd-comment tsd-typography"></div>
                         </li>
                       </ul>
@@ -652,26 +573,14 @@
                     <h4 class="tsd-returns-title">
                       Returns <span class="tsd-signature-type">void</span>
                     </h4>
-                    <div class="tsd-comment tsd-typography">
-                      <div class="tsd-tag-method">
-                        <h4 class="tsd-anchor-link">
-                          <a id="method-2" class="tsd-anchor"></a>Method<a
-                            href="#method-2"
-                            aria-label="Permalink"
-                            class="tsd-anchor-icon"
-                            ><svg viewBox="0 0 24 24" aria-hidden="true">
-                              <use href="../assets/icons.svg#icon-anchor"></use></svg
-                          ></a>
-                        </h4>
-                      </div>
-                    </div>
+                    <div class="tsd-comment tsd-typography"></div>
                     <aside class="tsd-sources">
                       <ul>
                         <li>
                           Defined in
                           <a
-                            href="https://github.com/HeeOne/eutils/blob/8d89b8890f9f2440443f6db5bffc54265dbc53ad/src/cache/StorageClient.ts#L107"
-                            >cache/StorageClient.ts:107</a
+                            href="https://github.com/HeeOne/eutils/blob/0cffd4d87004c81636a3454c266919310a2a256b/src/cache/StorageClient.ts#L99"
+                            >cache/StorageClient.ts:99</a
                           >
                         </li>
                       </ul>
@@ -724,7 +633,7 @@
                     ></a>
                   </div>
                   <div class="tsd-description">
-                    <div class="tsd-comment tsd-typography"><p>存储数据项</p></div>
+                    <div class="tsd-comment tsd-typography"><p>存储数据到指定键名</p></div>
                     <section class="tsd-panel">
                       <h4>Type Parameters</h4>
                       <ul class="tsd-type-parameter-list">
@@ -733,6 +642,7 @@
                             ><a id="setitemt" class="tsd-anchor"></a
                             ><span class="tsd-kind-type-parameter">T</span></span
                           >
+                          <div class="tsd-comment tsd-typography"><p>存储值的类型</p></div>
                           <div class="tsd-comment tsd-typography"></div>
                         </li>
                       </ul>
@@ -745,7 +655,9 @@
                             ><span class="tsd-kind-parameter">key</span>:
                             <span class="tsd-signature-type">string</span></span
                           >
-                          <div class="tsd-comment tsd-typography"><p>存储键名</p></div>
+                          <div class="tsd-comment tsd-typography">
+                            <p>存储键名（不需要包含前缀）</p>
+                          </div>
                           <div class="tsd-comment tsd-typography"></div>
                         </li>
                         <li>
@@ -758,7 +670,7 @@
                             ></span
                           >
                           <div class="tsd-comment tsd-typography">
-                            <p>需要存储的值（自动 JSON 序列化）</p>
+                            <p>要存储的值（自动序列化）</p>
                           </div>
                           <div class="tsd-comment tsd-typography"></div>
                         </li>
@@ -769,7 +681,7 @@
                             <span class="tsd-signature-type">number</span></span
                           >
                           <div class="tsd-comment tsd-typography">
-                            <p>过期时间（单位：毫秒）</p>
+                            <p>数据的存活时间（单位：毫秒），可选</p>
                           </div>
                           <div class="tsd-comment tsd-typography"></div>
                         </li>
@@ -779,28 +691,17 @@
                       Returns <span class="tsd-signature-type">void</span>
                     </h4>
                     <div class="tsd-comment tsd-typography">
-                      <div class="tsd-tag-method">
-                        <h4 class="tsd-anchor-link">
-                          <a id="method-3" class="tsd-anchor"></a>Method<a
-                            href="#method-3"
-                            aria-label="Permalink"
-                            class="tsd-anchor-icon"
-                            ><svg viewBox="0 0 24 24" aria-hidden="true">
-                              <use href="../assets/icons.svg#icon-anchor"></use></svg
-                          ></a>
-                        </h4>
-                      </div>
                       <div class="tsd-tag-example">
                         <h4 class="tsd-anchor-link">
-                          <a id="example-1" class="tsd-anchor"></a>Example<a
-                            href="#example-1"
+                          <a id="example-2" class="tsd-anchor"></a>Example<a
+                            href="#example-2"
                             aria-label="Permalink"
                             class="tsd-anchor-icon"
                             ><svg viewBox="0 0 24 24" aria-hidden="true">
                               <use href="../assets/icons.svg#icon-anchor"></use></svg
                           ></a>
                         </h4>
-                        <pre><code class="ts"><span class="hl-5">setItem</span><span class="hl-2">(</span><span class="hl-4">&#39;token&#39;</span><span class="hl-2">, </span><span class="hl-4">&#39;abc123&#39;</span><span class="hl-2">, </span><span class="hl-8">3600_000</span><span class="hl-2">) </span><span class="hl-9">// 1小时后过期</span>
+                        <pre><code class="ts"><span class="hl-7">client</span><span class="hl-2">.</span><span class="hl-5">setItem</span><span class="hl-2">(</span><span class="hl-4">&#39;user&#39;</span><span class="hl-2">, { </span><span class="hl-7">name:</span><span class="hl-2"> </span><span class="hl-4">&#39;John&#39;</span><span class="hl-2"> }, </span><span class="hl-8">60000</span><span class="hl-2">) </span><span class="hl-9">// 数据1分钟后过期</span>
 </code><button type="button">Copy</button></pre>
                       </div>
                     </div>
@@ -809,8 +710,8 @@
                         <li>
                           Defined in
                           <a
-                            href="https://github.com/HeeOne/eutils/blob/8d89b8890f9f2440443f6db5bffc54265dbc53ad/src/cache/StorageClient.ts#L68"
-                            >cache/StorageClient.ts:68</a
+                            href="https://github.com/HeeOne/eutils/blob/0cffd4d87004c81636a3454c266919310a2a256b/src/cache/StorageClient.ts#L59"
+                            >cache/StorageClient.ts:59</a
                           >
                         </li>
                       </ul>
@@ -963,7 +864,7 @@
             <a href="https://github.com/HeeOne/eutils" class="tsd-nav-link">Github</a>
           </nav>
           <nav class="tsd-navigation">
-            <a href="../modules.html">eUtils - v1.0.7</a>
+            <a href="../modules.html">eUtils - v1.0.9</a>
             <ul class="tsd-small-nested-navigation" id="tsd-nav-container">
               <li>Loading...</li>
             </ul>
