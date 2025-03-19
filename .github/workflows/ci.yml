@@ -21,17 +21,29 @@ jobs:
     needs: test
     if: github.ref == 'refs/heads/master'
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pages: write
+      id-token: write
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # 完整拉取提交历史
+
       - uses: actions/setup-node@v4
         with:
           node-version: 20
+
       - run: npm ci
-      - run: npm run docs
-      - uses: peaceiris/actions-gh-pages@v3
+      - run: npm run docs # 你的文档生成命令
+
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./docs
+          force_orphan: true # 清理旧文件
+          enable_jekyll: false # 非 Jekyll 项目必须关闭
 
   publish:
     needs: test
