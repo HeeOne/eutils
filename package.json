@@ -1,6 +1,6 @@
 {
   "name": "@heyee/eutils",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "type": "module",
   "description": "A useful utility package",
   "main": "dist/cjs/index.js",
@@ -11,11 +11,12 @@
     "dist"
   ],
   "scripts": {
-    "build": "rm -rf dist && rollup -c && tsc --emitDeclarationOnly && mv dist/src dist/types && rm -rf dist/src",
+    "build": "rm -rf dist && rollup -c && tsc --emitDeclarationOnly",
     "build:local": "rollup -c && tsc --emitDeclarationOnly",
     "test": "jest",
     "prepare": "husky",
-    "docs": "typedoc"
+    "docs": "rm -rf docs && typedoc",
+    "docs:local": "typedoc"
   },
   "keywords": [
     "dashboard",

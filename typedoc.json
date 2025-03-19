@@ -22,6 +22,7 @@
   // "typedoc-plugin-missing-exports", "varvara-typedoc-theme",
   "plugin": ["typedoc-material-theme"],
   "themeColor": "#cb9820",
+  "customCss": "./theme/material.css",
   // Set the theme to varvara
   // "theme": "varvara",
   // "customCss": "./theme/varvara.css",
