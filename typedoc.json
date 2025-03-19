@@ -26,7 +26,7 @@
   // Set the theme to varvara
   // "theme": "varvara",
   // "customCss": "./theme/varvara.css",
-  "categoryOrder": ["Format", "Type Aliase", "Interface", "*"],
+  "categoryOrder": ["Format", "*", "Type Aliase", "Interface"],
   "categorizeByGroup": true, // 点击 `modelues`时, 是否会根据 `@group - @category` 分组展示内容
   "navigation": {
     "includeGroups": false, //导航栏是否展示 `@group` 作为目录层级
@@ -35,5 +35,5 @@
     "compactFolders": true, //控制是否展开目录
     "excludeReferences": true
   },
-  "groupOrder": ["Get Started", "Interface", "Type Aliase", "Date", "Math"]
+  "groupOrder": ["Get Started", "Date", "Math", "URL", "Interface", "Type Aliase"]
 }
