@@ -1,4 +1,4 @@
-import { Recordable } from '@/typing'
+import { Recordable } from '../typing'
 
 /**
  *
