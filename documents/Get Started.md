@@ -5,7 +5,7 @@
 ### browser
 
 ```js
-<script scr="./dist/umd/eutils.min.js"></script>
+<script scr="./dist/umd/index.js"></script>
 <script>
 $eutils.formatNumberThousands(34566)
 // console: 34,566

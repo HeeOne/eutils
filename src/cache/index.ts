@@ -1,11 +1,12 @@
-import StorageClient from './StorageClient'
+import StorageClient, { StorageClientOptions } from './StorageClient'
 /**
  * createLocalStorage
  * @param {string} prefix - 命名空间
  * @returns {StorageClient}
  */
 function createLocalStorage(prefix: string): StorageClient {
-  return new StorageClient({ prefix, storageType: 'local' })
+  const op: StorageClientOptions = { prefix, storageType: 'local' }
+  return new StorageClient(op)
 }
 /**
  * createSessionStorage
@@ -13,7 +14,8 @@ function createLocalStorage(prefix: string): StorageClient {
  * @returns {StorageClient}
  */
 function createSessionStorage(prefix: string): StorageClient {
-  return new StorageClient({ prefix, storageType: 'session' })
+  const op: StorageClientOptions = { prefix, storageType: 'session' }
+  return new StorageClient(op)
 }
 
 export { StorageClient, createLocalStorage, createSessionStorage }
