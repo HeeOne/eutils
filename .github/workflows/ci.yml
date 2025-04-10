@@ -58,13 +58,15 @@ jobs:
           node-version: 20
           registry-url: https://registry.npmjs.org/
 
-      # 关键修复点：安装依赖时禁用 husky
       - name: Install for Publish
         env:
-          HUSKY: 0 # 禁止 husky 安装
-        run: npm ci --ignore-scripts # 双重保险
+          HUSKY: 0
+        run: npm ci --ignore-scripts
 
-      # 关键修复点：发布时跳过所有脚本
+      # 新增构建步骤
+      - name: Build
+        run: npm run build # 确保你的 package.json 中有对应的 build 脚本
+
       - name: Publish
         run: npm publish --ignore-scripts
         env:
