@@ -1,6 +1,6 @@
 {
   "name": "@heyee/eutils",
-  "version": "1.0.17",
+  "version": "1.0.18",
   "type": "module",
   "description": "A useful utility package",
   "main": "dist/cjs/index.js",
